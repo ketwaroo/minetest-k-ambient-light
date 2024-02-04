@@ -1,0 +1,16 @@
+# Base ambient Lighting
+# 0 - disabled, max 14.
+# Recommended you start out with low values and work your way up.
+k_ambient_light.global_illumination (Global Illumination Level) int 0 0 14
+
+
+# Extra additive lighting value by matching nodename
+# Comma separated list of `<pattern> <count>`
+# example `brick 4,^default:stone$ -5` would add `4` to global illumination to anything with `brick` in the name and remove `5` from `default:stone`
+# see lua `string.match()` documentation for pattern.
+k_ambient_light.match_by_name (Extra Match by Name) string
+
+# Extra additive lighting value by matching group
+# Comma separated list of `<group> <count>`
+# example `brick 4,stone -5` would add `4` to global illumination to anything belonging to `brick` group in the name and remove `5` from anything from `stone` group
+k_ambient_light.match_by_group (Extra Match by Group) string

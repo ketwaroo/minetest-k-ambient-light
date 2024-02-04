@@ -1,0 +1,11 @@
+{
+    "type": "MOD",
+    "title": "K Ambient Light",
+    "short_description": "Pseudo ambient lighting to banish the deep dark night. Allows a few extra granular tweaks and override options.",
+    "dev_state": "ACTIVELY_DEVELOPED",
+    "tags": ["environment"],
+    "license": "GPL-3.0-or-later",
+    "media_license": "GPL-3.0-or-later",
+    "issue_tracker": "https://github.com/ketwaroo/minetest-k-ambient-light/issues",
+    "repo": "https://github.com/ketwaroo/minetest-k-ambient-light"
+}
