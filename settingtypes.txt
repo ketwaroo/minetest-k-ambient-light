@@ -1,7 +1,7 @@
 # Base ambient Lighting
-# 0 - disabled, max 14.
+# 0 - engine default, max 14.
 # Recommended you start out with low values and work your way up.
-k_ambient_light.global_illumination (Global Illumination Level) int 0 0 14
+k_ambient_light.global_illumination (Global Illumination Level) int 3 0 14
 
 
 # Extra additive lighting value by matching nodename
