@@ -10,6 +10,7 @@ local presetLevels = {
         -- leave it at that. air should not be illuminated. breaks sunlight/skybox.
         air = 1,
         ignore = 1,
+        unknown = 1,
     },
 }
 
@@ -32,7 +33,7 @@ local function saneLevel(lvl)
     return math.floor(math.max(0, math.min(tonumber(lvl) or 0, minetest.LIGHT_MAX)))
 end
 
--- determins light level for a certain node def.
+-- determine light level for a certain node def.
 local function getLightLevel(nodedef)
     local name = nodedef.name
 
@@ -86,7 +87,6 @@ end
 
 
 minetest.register_on_mods_loaded(function()
-
     -- load after mods to allow some overrides.
     -- @todo an API for overrides
     presetLevels.match_by_name = strSplit(minetest.settings:get("k_ambient_light.match_by_name") or "")
@@ -94,11 +94,15 @@ minetest.register_on_mods_loaded(function()
 
 
     for name, def in pairs(minetest.registered_nodes) do
-        local lvl = getLightLevel(def)
+        -- sort of try to ignore invalid node names.
+        -- built it nodes usually don't have a colon in the name.
+        if string.match(name, '.+:.+') then
+            local lvl = getLightLevel(def)
 
-        if nil ~= lvl then
-            -- print("override " .. name .. " -> " .. lvl)
-            minetest.override_item(name, { light_source = lvl })
+            if nil ~= lvl then
+                -- print("override " .. name .. " -> " .. lvl)
+                minetest.override_item(name, { light_source = lvl })
+            end
         end
     end
 
